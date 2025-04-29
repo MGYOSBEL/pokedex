@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func main() {
@@ -9,5 +10,5 @@ func main() {
 }
 
 func cleanInput(text string) []string {
-	return []string{}
+	return strings.Split(strings.ToLower(strings.Trim(text, " ")), " ")
 }
