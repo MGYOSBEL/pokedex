@@ -5,18 +5,15 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/mgyosbel/pokedex/commands"
 )
 
 const prompt = "Pokedex > "
 
-type cliCommand struct {
-	name        string
-	description string
-	callback    func() error
-}
-
 func StartRepl() {
 	scanner := bufio.NewScanner(os.Stdin)
+	var cfg commands.Config
 
 	for {
 		fmt.Print(prompt)
@@ -28,29 +25,14 @@ func StartRepl() {
 		}
 
 		commandName := text[0]
-		availableCommands := getCommands()
+		availableCommands := commands.GetCommands()
 
 		cmd, ok := availableCommands[commandName]
 		if !ok {
 			fmt.Println("Unknown command")
 		}
 
-		cmd.callback()
-	}
-}
-
-func getCommands() map[string]cliCommand {
-	return map[string]cliCommand{
-		"exit": {
-			name:        "exit",
-			description: "Exit the Pokedex",
-			callback:    commandExit,
-		},
-		"help": {
-			name:        "help",
-			description: "Displays a help message",
-			callback:    commandHelp,
-		},
+		cmd.Callback(&cfg)
 	}
 }
 
