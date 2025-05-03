@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/mgyosbel/pokedex/commands"
+	"github.com/mgyosbel/pokedex/internal/commands"
 )
 
 const prompt = "Pokedex > "
@@ -30,6 +30,7 @@ func StartRepl() {
 		cmd, ok := availableCommands[commandName]
 		if !ok {
 			fmt.Println("Unknown command")
+			continue
 		}
 
 		cmd.Callback(&cfg)
