@@ -13,7 +13,7 @@ const prompt = "Pokedex > "
 
 func StartRepl() {
 	scanner := bufio.NewScanner(os.Stdin)
-	var cfg commands.Config
+	cfg := commands.NewConfig()
 
 	for {
 		fmt.Print(prompt)
@@ -33,7 +33,7 @@ func StartRepl() {
 			continue
 		}
 
-		cmd.Callback(&cfg)
+		cmd.Callback(cfg)
 	}
 }
 

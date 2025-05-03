@@ -14,6 +14,12 @@ type Config struct {
 	PreviousLocationAreaUrl *string
 }
 
+func NewConfig() *Config {
+	return &Config{
+		Client: *api.NewClient(),
+	}
+}
+
 func GetCommands() map[string]CliCommand {
 	return map[string]CliCommand{
 		"map": {
