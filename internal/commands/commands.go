@@ -9,15 +9,15 @@ type CliCommand struct {
 }
 
 type Config struct {
-	Client                  api.Client
+	Client                  *api.Client
 	NextLocationAreaUrl     *string
 	PreviousLocationAreaUrl *string
-	CurrentLocationName     *string
+	CommandArguments        []string
 }
 
 func NewConfig() *Config {
 	return &Config{
-		Client: *api.NewClient(),
+		Client: api.NewClient(),
 	}
 }
 
@@ -25,7 +25,7 @@ func GetCommands() map[string]CliCommand {
 	return map[string]CliCommand{
 		"map": {
 			Name:        "map",
-			Description: "Displays the name of 20 location areas in the Pokemon world",
+			Description: "Displays the name of  location areas in the Pokemon world",
 			Callback:    Map,
 		},
 		"mapb": {

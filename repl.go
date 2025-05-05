@@ -32,7 +32,8 @@ func StartRepl() {
 			fmt.Println("Unknown command")
 			continue
 		}
-
+		arguments := text[1:]
+		cfg.CommandArguments = arguments
 		cmd.Callback(cfg)
 	}
 }

@@ -3,7 +3,7 @@ package commands
 import "fmt"
 
 func Explore(c *Config) error {
-	res, err := c.Client.GetLocationAreaByName(c.CurrentLocationName)
+	res, err := c.Client.GetLocationAreaByName(&c.CommandArguments[0])
 	if err != nil {
 		return err
 	}
