@@ -12,6 +12,7 @@ type Config struct {
 	Client                  api.Client
 	NextLocationAreaUrl     *string
 	PreviousLocationAreaUrl *string
+	CurrentLocationName     *string
 }
 
 func NewConfig() *Config {
@@ -31,6 +32,11 @@ func GetCommands() map[string]CliCommand {
 			Name:        "mapb",
 			Description: "Displays the name of 20 location areas in the Pokemon world in reverse order",
 			Callback:    Mapb,
+		},
+		"explore": {
+			Name:        "explore",
+			Description: "Explore a specific area location",
+			Callback:    Explore,
 		},
 		"exit": {
 			Name:        "exit",
