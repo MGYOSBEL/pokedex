@@ -31,5 +31,5 @@ func Catch(c *Config) error {
 }
 
 func randomize(exp int) bool {
-	return rand.Intn(exp%BASE_DIFFICULTY) == 0
+	return rand.Intn(exp)%BASE_DIFFICULTY == 0
 }

@@ -34,7 +34,10 @@ func StartRepl() {
 		}
 		arguments := text[1:]
 		cfg.CommandArguments = arguments
-		cmd.Callback(cfg)
+		err := cmd.Callback(cfg)
+		if err != nil {
+			fmt.Println(err)
+		}
 	}
 }
 
