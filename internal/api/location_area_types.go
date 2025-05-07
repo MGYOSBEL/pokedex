@@ -1,11 +1,6 @@
 package api
 
-type NamedApiResource struct {
-	Name string `json:"name"`
-	URL  string `json:"url"`
-}
-
-type LocationAreasResponse struct {
+type LocationAreaListResponse struct {
 	Count    int                `json:"count"`
 	Next     *string            `json:"next"`
 	Previous *string            `json:"previous"`

@@ -5,22 +5,22 @@ import (
 	"fmt"
 )
 
-const LOCATION_AREA_URL = API_URL + "/location-area/"
+const LOCATION_AREA_URL = API_URL + "/location-area"
 
-func (c *Client) GetLocationAreas(url *string) (LocationAreasResponse, error) {
+func (c *Client) GetLocationAreas(url *string) (LocationAreaListResponse, error) {
 	endpoint := LOCATION_AREA_URL
 	if url != nil {
 		endpoint = *url
 	}
-	var la LocationAreasResponse
+	var la LocationAreaListResponse
 
 	response, err := c.GetCached(endpoint)
 	if err != nil {
-		return LocationAreasResponse{}, err
+		return LocationAreaListResponse{}, err
 	}
 	err = json.Unmarshal(response, &la)
 	if err != nil {
-		return LocationAreasResponse{}, err
+		return LocationAreaListResponse{}, err
 	}
 
 	return la, nil

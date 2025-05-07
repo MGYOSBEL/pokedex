@@ -13,11 +13,13 @@ type Config struct {
 	NextLocationAreaUrl     *string
 	PreviousLocationAreaUrl *string
 	CommandArguments        []string
+	UserPokedex             map[string]api.Pokemon
 }
 
 func NewConfig() *Config {
 	return &Config{
-		Client: api.NewClient(),
+		Client:      api.NewClient(),
+		UserPokedex: make(map[string]api.Pokemon),
 	}
 }
 
@@ -37,6 +39,11 @@ func GetCommands() map[string]CliCommand {
 			Name:        "explore",
 			Description: "Explore a specific area location",
 			Callback:    Explore,
+		},
+		"catch": {
+			Name:        "catch",
+			Description: "Try to catch a Pokemon",
+			Callback:    Catch,
 		},
 		"exit": {
 			Name:        "exit",
